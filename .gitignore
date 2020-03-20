@@ -1,4 +1,4 @@
 # file format to ignore
-.pdf
-.png
-.jpeg
+*.pdf
+*.png
+*.jpeg
