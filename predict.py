@@ -1,15 +1,21 @@
 import pandas as pd
 from utils.forecast import exp_predict
 
-data_path = "COVID-19-data/csse_covid_19_data/csse_covid_19_time_series/"
+numbers = ["Confirmed", "Deaths"]
 
-file = "time_series_19-covid-Deaths.csv"
+for number in numbers:
 
-data = pd.read_csv(data_path + file)
+    print("Prediction of %s cases tomorrow:" % number)
 
-countries = ["Italy", "Spain", "France"]
+    data_path = "COVID-19-data/csse_covid_19_data/csse_covid_19_time_series/"
 
-pred = exp_predict(data, countries)
+    file = "time_series_19-covid-%s.csv" % number
 
-for key in pred.keys():
-    print("%s prediction: %i" % (key, int(pred[key])))
+    data = pd.read_csv(data_path + file)
+
+    countries = ["Italy", "Spain", "France"]
+
+    pred = exp_predict(data, countries)
+
+    for key in pred.keys():
+        print("     %s prediction: %i" % (key, int(pred[key])))
